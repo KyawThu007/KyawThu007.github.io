@@ -744,10 +744,13 @@ section:nth-child(odd) .animate.scroll,
         width: 38px;
         height: 38px;
     }
+    .about .animate.scroll,
+    .education .animate.scroll,
+    .skills .animate.scroll,
     .contact .animate.scroll,
     .footer .animate.scroll{
         width: 0;
-        animation-delay: calc(.3s * var(--i));
+        animation: none;
     }
 }
 @media (max-width:462px){
@@ -766,11 +769,6 @@ section:nth-child(odd) .animate.scroll,
     .footer p{
         margin-top: 2rem;
         text-align: center;
-    }
-    .contact .animate.scroll,
-    .footer .animate.scroll{
-        width: 0;
-        animation-delay: calc(.3s * var(--i));
     }
 }
 @media (max-width:371px){
