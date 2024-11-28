@@ -35,15 +35,14 @@ window.onscroll = () => {
 
     let footer=document.querySelector('footer');
     footer.classList.toggle('show-animate',this.innerHeight + this.scrollY >= document.scrollingElement.scrollHeight);
-   
-    
+    document.getElementById("about-more").style.display = "none";
 }
 
 const form = document.querySelector("#contact-form");
 form.addEventListener("submit", event => {
     event.preventDefault();
     openMailClient();
-})
+});
 
 function openMailClient() {
     const email = 'kyawthu677288@gmail.com'; // recipient's email
@@ -53,4 +52,20 @@ function openMailClient() {
     const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
     
     window.location.href = mailtoLink;
+}
+
+document.querySelector('#readMore').addEventListener("mouseover", event => {
+    showReadMore();
+});
+var more = document.getElementById("about-more");
+function showReadMore() {
+    more.style.display = "block";
+}
+function closeReadMore() {
+    more.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == more) {
+        closeReadMore();
+    }
 }
