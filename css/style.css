@@ -744,6 +744,8 @@ section:nth-child(odd) .animate.scroll,
         width: 38px;
         height: 38px;
     }
+}
+@media (max-width:490px){
     .about .animate.scroll,
     .education .animate.scroll,
     .skills .animate.scroll,
@@ -753,6 +755,7 @@ section:nth-child(odd) .animate.scroll,
         animation: none;
     }
 }
+
 @media (max-width:462px){
     .home-content h1{
         font-size: 5.2rem;
