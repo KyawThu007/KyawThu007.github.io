@@ -762,6 +762,10 @@ section:nth-child(odd) .animate.scroll,
         margin-top: 2rem;
         text-align: center;
     }
+    .contact .animate.scroll
+    .footer .animate.scroll{
+        width: 100%;
+    }
 }
 @media (max-width:371px){
     .home{
