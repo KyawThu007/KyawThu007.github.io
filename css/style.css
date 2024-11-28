@@ -764,7 +764,7 @@ section:nth-child(odd) .animate.scroll,
     }
     .contact .animate.scroll,
     .footer .animate.scroll{
-        width: 100%;
+        width: 0;
     }
 }
 @media (max-width:371px){
