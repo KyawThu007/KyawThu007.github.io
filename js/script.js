@@ -54,7 +54,7 @@ function openMailClient() {
     window.location.href = mailtoLink;
 }
 
-document.querySelector('#readMore').addEventListener("mouseover", event => {
+document.querySelector('#readMore').addEventListener("click", event => {
     showReadMore();
 });
 var more = document.getElementById("about-more");
