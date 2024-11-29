@@ -791,7 +791,7 @@ section:nth-child(odd) .animate.scroll,
     }
 }
 
-@media (max-height:500px){
+@media (max-height:600px){
     .about .animate.scroll,
     .education .animate.scroll,
     .skills .animate.scroll,
