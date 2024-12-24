@@ -58,9 +58,7 @@ My core skills are in **Java** and **web development**, with proficiency in the 
 
 Feel free to reach out to me via the contact form in the portfolio or through the following:
 
-- **Email**: [your-email@example.com]
-- **Telegram**: [@fo7under](https://t.me/fo7under)
-- **LinkedIn**: [Your LinkedIn Profile]
+- **Email**: [kyawthu677288@example.com]
 
 ---
 
