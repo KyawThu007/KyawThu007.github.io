@@ -488,6 +488,10 @@ span{
     width: 60%;
     background: rgb(243, 185, 77);
 }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(5) .bar span{
+    width: 40%;
+    background: rgb(243, 185, 77);
+}
 .skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span{
     width: 30%;
     background: rgb(49, 150, 49);
@@ -502,6 +506,10 @@ span{
 }
 .skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span{
     width: 70%;
+    background: rgb(243, 185, 77);
+}
+.skills-column:nth-child(2) .skills-content .progress:nth-child(5) .bar span{
+    width: 35%;
     background: rgb(243, 185, 77);
 }
 .contact{
