@@ -39,24 +39,29 @@ window.onscroll = () => {
 }
 
 const form = document.querySelector("#contact-form");
-form.addEventListener("submit", event => {
-    event.preventDefault();
-    openMailClient();
-});
+if (form) {
+    form.addEventListener("submit", event => {
+        event.preventDefault();
+        openMailClient();
+    });
+}
 
 function openMailClient() {
     const email = 'kyawthu677288@gmail.com'; // recipient's email
-    const subject = encodeURIComponent(form.subject.value); // subject of the email
-    const body = encodeURIComponent(form.message.value);
+    const subject = form ? encodeURIComponent(form.subject.value) : '';
+    const body = form ? encodeURIComponent(form.message.value) : '';
     
     const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
     
     window.location.href = mailtoLink;
 }
 
-document.querySelector('#readMore').addEventListener("click", event => {
-    showReadMore();
-});
+const readMoreBtn = document.querySelector('#readMore');
+if (readMoreBtn) {
+    readMoreBtn.addEventListener("click", event => {
+        showReadMore();
+    });
+}
 
 const closeAboutMoreBtn = document.querySelector('#closeAboutMore');
 if (closeAboutMoreBtn) {
@@ -74,4 +79,35 @@ window.onclick = function(event) {
     if (event.target == more) {
         closeReadMore();
     }
+}
+
+const projectCarousel = document.querySelector('.project-carousel');
+const prevProjectBtn = document.querySelector('.project-prev');
+const nextProjectBtn = document.querySelector('.project-next');
+
+function scrollProjectCarousel(direction) {
+    if (!projectCarousel) return;
+    const card = projectCarousel.querySelector('.project-card');
+    if (!card) return;
+
+    const grid = projectCarousel.querySelector('.projects-grid');
+    const gap = parseFloat(getComputedStyle(grid).gap) || 24;
+    const scrollAmount = card.clientWidth + gap;
+    const maxScroll = projectCarousel.scrollWidth - projectCarousel.clientWidth;
+    const nextPosition = Math.max(0, Math.min(maxScroll, projectCarousel.scrollLeft + direction * scrollAmount));
+
+    projectCarousel.scrollTo({ left: nextPosition, behavior: 'smooth' });
+}
+
+if (prevProjectBtn) {
+    prevProjectBtn.addEventListener('click', event => {
+        event.preventDefault();
+        scrollProjectCarousel(-1);
+    });
+}
+if (nextProjectBtn) {
+    nextProjectBtn.addEventListener('click', event => {
+        event.preventDefault();
+        scrollProjectCarousel(1);
+    });
 }

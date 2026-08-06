@@ -444,6 +444,210 @@ span{
     border: .2rem solid var(--bg-color);
     border-radius: .6rem;
 }
+.projects{
+    min-height: auto;
+    padding-bottom: 7rem;
+    background: linear-gradient(135deg, rgba(0, 171, 240, 0.08), rgba(17, 46, 66, 0.95));
+}
+.projects h2{
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.project-carousel-wrapper{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    max-width: 130rem;
+    margin: 3rem auto 0;
+}
+.project-carousel{
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    touch-action: pan-y;
+    overscroll-behavior-x: contain;
+}
+.project-carousel::-webkit-scrollbar{
+    display: none;
+}
+.projects-grid{
+    display: flex;
+    gap: 2rem;
+    padding-bottom: 1rem;
+    width: max-content;
+    scroll-snap-type: x mandatory;
+}
+.project-card{
+    flex: 0 0 calc((100% - 4rem) / 3);
+    min-width: 26rem;
+    max-width: 32rem;
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.6rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.18);
+    transition: transform .3s ease, border-color .3s ease, background .3s ease;
+}
+.project-card:hover{
+    transform: translateY(-0.8rem);
+    border-color: rgba(0, 171, 240, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+}
+.project-nav{
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform .25s ease, background .25s ease;
+}
+.project-nav:hover{
+    transform: translateY(-2px);
+    background: rgba(0, 171, 240, 0.12);
+}
+.project-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.project-icon{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background: rgba(0, 171, 240, 0.13);
+    color: var(--main-color);
+    font-size: 2rem;
+}
+.project-actions a{
+    color: rgba(237, 237, 237, 0.75);
+    margin-left: 1rem;
+    font-size: 1.8rem;
+    transition: color .25s ease;
+}
+.project-actions a:hover{
+    color: var(--main-color);
+}
+.project-card h3{
+    font-size: 2rem;
+    color: var(--text-color);
+}
+.project-card p{
+    font-size: 1.55rem;
+    line-height: 1.8;
+    color: rgba(237, 237, 237, 0.9);
+}
+.project-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+.project-tags span{
+    display: inline-flex;
+    padding: .7rem 1rem;
+    border-radius: 1rem;
+    background: rgba(0, 171, 240, 0.12);
+    color: var(--main-color);
+    font-size: 1.3rem;
+}
+@media (max-width:1200px){
+    .project-carousel-wrapper{
+        grid-template-columns: 1fr;
+    }
+    .project-nav{
+        justify-self: center;
+    }
+}
+@media (max-width:900px){
+    .projects-grid{
+        gap: 1.2rem;
+    }
+    .project-card{
+        min-width: 24rem;
+        max-width: 28rem;
+    }
+}
+@media (max-width:780px){
+    .project-carousel-wrapper{
+        grid-template-columns: 1fr;
+    }
+    .project-card{
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .project-nav{
+        display: none;
+    }
+}
+.project-card:hover{
+    transform: translateY(-0.8rem);
+    border-color: rgba(0, 171, 240, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+}
+.project-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.project-icon{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background: rgba(0, 171, 240, 0.13);
+    color: var(--main-color);
+    font-size: 2rem;
+}
+.project-actions a{
+    color: rgba(237, 237, 237, 0.75);
+    margin-left: 1rem;
+    font-size: 1.8rem;
+    transition: color .25s ease;
+}
+.project-actions a:hover{
+    color: var(--main-color);
+}
+.project-card h3{
+    font-size: 2rem;
+    color: var(--text-color);
+}
+.project-card p{
+    font-size: 1.55rem;
+    line-height: 1.8;
+    color: rgba(237, 237, 237, 0.9);
+}
+.project-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+.project-tags span{
+    display: inline-flex;
+    padding: .7rem 1rem;
+    border-radius: 1rem;
+    background: rgba(0, 171, 240, 0.12);
+    color: var(--main-color);
+    font-size: 1.3rem;
+}
+
 .skills{
     min-height: auto;
     padding-bottom: 7rem;
