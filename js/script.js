@@ -57,6 +57,12 @@ function openMailClient() {
 document.querySelector('#readMore').addEventListener("click", event => {
     showReadMore();
 });
+
+const closeAboutMoreBtn = document.querySelector('#closeAboutMore');
+if (closeAboutMoreBtn) {
+    closeAboutMoreBtn.addEventListener('click', closeReadMore);
+}
+
 var more = document.getElementById("about-more");
 function showReadMore() {
     more.style.display = "block";
