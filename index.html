@@ -53,40 +53,32 @@
 
         <section class="about" id="about">
             <h2 class="heading">About <span>Me</span><span class="animate scroll" style="--i:1;"></span></h2>
-            <div class="about-img">
-                <img src="images/about.jpg" alt="">
-                <span class="circle-spin"></span>
-                <span class="animate scroll" style="--i:2;"></span>
-            </div>
-            <div class="about-content">
-                <h3>Java Developer<span class="animate scroll" style="--i:3;"></span></h3>
-                <p>
-                    I am a Java developer with a strong foundation in core Java and object-oriented programming.
-                </p>
-                <div class="btn-box btns">
-                    <button class="btn" id="readMore">Read More</button>
-                    <span class="animate scroll" style="--i:5;"></span>
+            <div class="about-grid">
+                <div class="about-card about-summary">
+                    <span class="about-icon"><i class="bx bxs-comment-detail"></i></span>
+                    <h3>Profile</h3>
+                    <p>I am a focused Java developer with strong core Java skills, practical OOP experience, and a passion for writing maintainable, scalable applications.</p>
+                </div>
+                <div class="about-card about-details">
+                    <span class="about-icon"><i class="bx bxs-briefcase-alt-2"></i></span>
+                    <h3>What I Do</h3>
+                    <ul>
+                        <li>Develop backend systems and APIs in Java</li>
+                        <li>Design clean, object-oriented solutions</li>
+                        <li>Use frameworks and databases to build production-ready apps</li>
+                    </ul>
+                </div>
+                <div class="about-card about-stats">
+                    <span class="about-icon"><i class="bx bxs-bar-chart-alt-2"></i></span>
+                    <h3>Strengths</h3>
+                    <div class="about-list">
+                        <div><strong>Java</strong> + OOP</div>
+                        <div><strong>Back-end</strong> development</div>
+                        <div><strong>Clean code</strong> & architecture</div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <div id="about-more" class="more">
-            <div class="more-content">
-                <button class="close-btn" id="closeAboutMore" aria-label="Close">&times;</button>
-                <h3>More About Me</h3>
-                <p>
-                    I am a Java developer with a strong foundation in core Java and object-oriented programming. I build scalable and efficient applications while focusing on clean code, maintainable architecture, and modern software practices.
-                </p>
-                <div class="more-details">
-                    <p>Key strengths include:</p>
-                    <ul>
-                        <li>Core Java, OOP, and design pattern experience</li>
-                        <li>Hands-on work with Java frameworks, web apps, and backend systems</li>
-                        <li>Collaborative problem solving with attention to performance and quality</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
         <section class="education" id="education">
             <h2 class="heading">My <span>Journey</span><span class="animate scroll" style="--i:1;"></span></h2>
@@ -278,39 +270,32 @@
 
         <section class="contact" id="contact">
             <h2 class="heading">Contact <span>Me</span><span class="animate scroll" style="--i:1;"></span></h2>
-            <form id="contact-form">
-                <div class="input-box">
-                    <div class="input-field">
-                        <input type="text" name="full_name" placeholder="Full Name" required>
-                        <span class="focus"></span>
+            <div class="contact-panel">
+                <div class="contact-info">
+                    <h3>Let's build something great together</h3>
+                    <p>Share your project idea or ask a question — I’ll respond quickly with a thoughtful solution.</p>
+                    <div class="contact-meta">
+                        <div><i class="bx bx-envelope"></i><span>kyawthu677288@gmail.com</span></div>
+                        <div><i class="bx bx-rocket"></i><span>Open to freelance and remote work</span></div>
                     </div>
-                    <div class="input-field">
-                        <input type="text" name="subject" placeholder="Email Subject" required>
-                        <span class="focus"></span>
-                    </div>
-                    <span class="animate scroll" style="--i:3;"></span>
                 </div>
-                <!-- <div class="input-box">
-                    <div class="input-field">
-                        <input type="number" name="mobile_number" placeholder="Mobile Number" >
-                        <span class="focus"></span>
+                <form id="contact-form">
+                    <div class="input-box">
+                        <div class="input-field">
+                            <input type="text" name="full_name" placeholder="Full Name" required>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="subject" placeholder="Email Subject" required>
+                        </div>
                     </div>
-                    <div class="input-field">
-                        <input type="text" name="subject" placeholder="Email Subject" >
-                        <span class="focus"></span>
+                    <div class="textarea-field">
+                        <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
                     </div>
-                    <span class="animate scroll" style="--i:5;"></span>
-                </div> -->
-                <div class="textarea-field">
-                    <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
-                    <span class="focus"></span>
-                    <span class="animate scroll" style="--i:7;"></span>
-                </div>
-                <div class="btn-box btns">
-                    <button type="submit" class="btn" id="submitBtn">Submit</button>
-                    <span class="animate scroll" style="--i:9;"></span>
-                </div>
-            </form>
+                    <div class="btn-row">
+                        <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                    </div>
+                </form>
+            </div>
         </section>
 
         <footer class="footer">
