@@ -473,9 +473,10 @@ span{
 }
 .projects{
     min-height: auto;
-    padding-bottom: 20rem;
-    background: linear-gradient(135deg, rgba(0, 171, 240, 0.08), rgba(17, 46, 66, 0.95));
+    padding-bottom: 6rem;
+    background: var(--second-bg-color);
 }
+
 .projects h2{
     display: inline-block;
     left: 50%;
