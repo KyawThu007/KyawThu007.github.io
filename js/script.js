@@ -56,31 +56,6 @@ function openMailClient() {
     window.location.href = mailtoLink;
 }
 
-const readMoreBtn = document.querySelector('#readMore');
-if (readMoreBtn) {
-    readMoreBtn.addEventListener("click", event => {
-        showReadMore();
-    });
-}
-
-const closeAboutMoreBtn = document.querySelector('#closeAboutMore');
-if (closeAboutMoreBtn) {
-    closeAboutMoreBtn.addEventListener('click', closeReadMore);
-}
-
-var more = document.getElementById("about-more");
-function showReadMore() {
-    more.style.display = "block";
-}
-function closeReadMore() {
-    more.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == more) {
-        closeReadMore();
-    }
-}
-
 const projectCarousel = document.querySelector('.project-carousel');
 const prevProjectBtn = document.querySelector('.project-prev');
 const nextProjectBtn = document.querySelector('.project-next');
