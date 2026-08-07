@@ -240,14 +240,14 @@ section{
     position: absolute;
     top: 0;
     right: 0;
-    width: 45%;
+    width: 50%;
     height: 100%;
     background: transparent;
     transition: 3s;
 }
 .home-imgHover:hover{
     background: var(--bg-color);
-    opacity: .8;
+    opacity: .3;
 }
 .about{
     display: flex;
@@ -473,7 +473,7 @@ span{
 }
 .projects{
     min-height: auto;
-    padding-bottom: 7rem;
+    padding-bottom: 20rem;
     background: linear-gradient(135deg, rgba(0, 171, 240, 0.08), rgba(17, 46, 66, 0.95));
 }
 .projects h2{
