@@ -1198,7 +1198,7 @@ section:nth-child(odd) .animate.scroll,
 .footer .animate.scroll{
     background: var(--second-bg-color);
 }
-.education .education-box .animate.scroll{
+.education .education-box .animate.scroll, .experience .experience-box .animate.scroll{
     width: 105%;
 }
 .about.show-animate .animate.scroll,
