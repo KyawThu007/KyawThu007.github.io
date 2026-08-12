@@ -250,7 +250,7 @@ section{
     pointer-events: auto;
     cursor: pointer;
     overflow: hidden;
-    animation: heroImageFloat 3s ease-in-out infinite alternate;
+    animation: heroImageFloat 4.5s ease-in-out infinite alternate;
 }
 .home-imgHover:hover{
     opacity: 1;
@@ -260,11 +260,17 @@ section{
 }
 
 @keyframes heroImageFloat {
-    0% {
+    0%, 100% {
         transform: translateY(0px) scale(1);
     }
-    100% {
-        transform: translateY(-2px) scale(1.05);
+    25% {
+        transform: translateY(-2px) scale(1.006);
+    }
+    50% {
+        transform: translateY(-4px) scale(1.012);
+    }
+    75% {
+        transform: translateY(-2px) scale(1.008);
     }
 }
 .about{
