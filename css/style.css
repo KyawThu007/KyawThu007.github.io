@@ -506,7 +506,7 @@ span{
 .projects-grid{
     display: flex;
     gap: 2rem;
-    padding-bottom: 1rem;
+    padding: 3rem;
     width: max-content;
     scroll-snap-type: x mandatory;
 }
