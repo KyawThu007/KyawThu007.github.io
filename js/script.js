@@ -1,10 +1,29 @@
 
 let menuIcon=document.querySelector('#menu-icon');
 let navbar=document.querySelector('.navbar');
+const homeSection = document.querySelector('.home');
+const homeImageHover = document.querySelector('.home-imgHover');
 
 menuIcon.onclick = () => {
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
+}
+
+if (homeSection && homeImageHover) {
+    homeSection.addEventListener('mouseenter', () => {
+        homeImageHover.classList.add('visible');
+    });
+
+    homeSection.addEventListener('mouseleave', () => {
+        if (!homeImageHover.classList.contains('active')) {
+            homeImageHover.classList.remove('visible');
+        }
+    });
+
+    homeImageHover.addEventListener('click', () => {
+        homeImageHover.classList.toggle('active');
+        homeImageHover.classList.toggle('visible', homeImageHover.classList.contains('active'));
+    });
 }
 
 let sections=document.querySelectorAll('section');
