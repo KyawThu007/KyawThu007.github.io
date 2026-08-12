@@ -54,7 +54,11 @@ window.onscroll = () => {
 
     let footer=document.querySelector('footer');
     footer.classList.toggle('show-animate',this.innerHeight + this.scrollY >= document.scrollingElement.scrollHeight);
-    document.getElementById("about-more").style.display = "none";
+
+    const aboutMore = document.getElementById("about-more");
+    if (aboutMore) {
+        aboutMore.style.display = "none";
+    }
 }
 
 const form = document.querySelector("#contact-form");
@@ -62,6 +66,69 @@ if (form) {
     form.addEventListener("submit", event => {
         event.preventDefault();
         openMailClient();
+    });
+}
+
+function copyFallback(text) {
+    const tempField = document.createElement('textarea');
+    tempField.value = text;
+    tempField.setAttribute('readonly', '');
+    tempField.style.position = 'fixed';
+    tempField.style.opacity = '0';
+    document.body.appendChild(tempField);
+    tempField.focus();
+    tempField.select();
+    tempField.setSelectionRange(0, tempField.value.length);
+
+    const successful = document.execCommand && document.execCommand('copy');
+    document.body.removeChild(tempField);
+
+    if (!successful) {
+        throw new Error('Copy command failed');
+    }
+}
+
+function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text).catch(() => copyFallback(text));
+    }
+    return Promise.resolve(copyFallback(text));
+}
+
+const copyButtons = document.querySelectorAll('.contact-copy');
+
+if (copyButtons.length) {
+    copyButtons.forEach((button) => {
+        const value = button.dataset.copy || '';
+        const label = button.querySelector('span');
+        const originalText = label ? label.textContent : value;
+
+        button.addEventListener('click', async () => {
+            try {
+                await copyText(value);
+
+                if (label) {
+                    label.textContent = 'Copied!';
+                }
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    if (label) {
+                        label.textContent = originalText;
+                    }
+                    button.classList.remove('copied');
+                }, 1200);
+            } catch (error) {
+                if (label) {
+                    label.textContent = 'Copy failed';
+                }
+                setTimeout(() => {
+                    if (label) {
+                        label.textContent = originalText;
+                    }
+                }, 1200);
+            }
+        });
     });
 }
 
