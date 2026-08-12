@@ -59,30 +59,80 @@ function openMailClient() {
 const projectCarousel = document.querySelector('.project-carousel');
 const prevProjectBtn = document.querySelector('.project-prev');
 const nextProjectBtn = document.querySelector('.project-next');
+const projectDots = document.querySelectorAll('.project-dot');
 
-function scrollProjectCarousel(direction) {
-    if (!projectCarousel) return;
+function getProjectCardWidth() {
+    if (!projectCarousel) return 0;
     const card = projectCarousel.querySelector('.project-card');
-    if (!card) return;
-
+    if (!card) return 0;
     const grid = projectCarousel.querySelector('.projects-grid');
     const gap = parseFloat(getComputedStyle(grid).gap) || 24;
-    const scrollAmount = card.clientWidth + gap;
-    const maxScroll = projectCarousel.scrollWidth - projectCarousel.clientWidth;
-    const nextPosition = Math.max(0, Math.min(maxScroll, projectCarousel.scrollLeft + direction * scrollAmount));
+    return card.getBoundingClientRect().width + gap;
+}
 
+function updateProjectDots(index) {
+    projectDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('active', dotIndex === index);
+    });
+}
+
+function scrollProjectCarousel(direction, shouldSetDot = true) {
+    if (!projectCarousel) return;
+    const grid = projectCarousel.querySelector('.projects-grid');
+    if (!grid) return;
+
+    const cardWidth = getProjectCardWidth();
+    const maxScroll = projectCarousel.scrollWidth - projectCarousel.clientWidth;
+    const nextPosition = Math.max(0, Math.min(maxScroll, projectCarousel.scrollLeft + direction * cardWidth));
     projectCarousel.scrollTo({ left: nextPosition, behavior: 'smooth' });
+
+    if (shouldSetDot) {
+        const activeIndex = Math.round(nextPosition / cardWidth);
+        updateProjectDots(Math.min(activeIndex, projectDots.length - 1));
+    }
 }
 
 if (prevProjectBtn) {
     prevProjectBtn.addEventListener('click', event => {
         event.preventDefault();
-        scrollProjectCarousel(-1);
+        scrollProjectCarousel(-1, true);
     });
 }
 if (nextProjectBtn) {
     nextProjectBtn.addEventListener('click', event => {
         event.preventDefault();
-        scrollProjectCarousel(1);
+        scrollProjectCarousel(1, true);
     });
+}
+
+projectDots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+        const index = Number(dot.dataset.slide || 0);
+        const targetLeft = index * getProjectCardWidth();
+        projectCarousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
+        updateProjectDots(index);
+    });
+});
+
+let projectAutoScroll = null;
+
+function startProjectAutoScroll() {
+    if (!projectCarousel || projectDots.length === 0) return;
+    projectAutoScroll = setInterval(() => {
+        const maxScroll = projectCarousel.scrollWidth - projectCarousel.clientWidth;
+        if (projectCarousel.scrollLeft >= maxScroll - 2) {
+            projectCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+            updateProjectDots(0);
+            return;
+        }
+        scrollProjectCarousel(1, false);
+        const activeIndex = Math.min(Math.round(projectCarousel.scrollLeft / getProjectCardWidth()), projectDots.length - 1);
+        updateProjectDots(activeIndex);
+    }, 2500);
+}
+
+if (projectCarousel) {
+    projectCarousel.addEventListener('mouseenter', () => clearInterval(projectAutoScroll));
+    projectCarousel.addEventListener('mouseleave', startProjectAutoScroll);
+    startProjectAutoScroll();
 }

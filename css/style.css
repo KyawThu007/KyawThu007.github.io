@@ -700,6 +700,27 @@ span{
     transform: translateY(-2px);
     background: rgba(0, 171, 240, 0.12);
 }
+.project-dots{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.project-dot{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.28);
+    border: none;
+    cursor: pointer;
+    transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.project-dot.active{
+    background: var(--main-color);
+    transform: scale(1.35);
+    box-shadow: 0 0 0 .4rem rgba(0, 171, 240, 0.18);
+}
 .project-head{
     display: flex;
     justify-content: space-between;
