@@ -1386,6 +1386,17 @@ section:nth-child(odd) .animate.scroll,
     .home-content .text-animate h3{
         font-size: 3.6rem;
         letter-spacing: .02em;
+        color: var(--main-color);
+        -webkit-text-stroke: 0;
+        background: none;
+        animation: none;
+    }
+    .home.show-animate .home-content .text-animate h3,
+    .home.show-animate .home-content .text-animate h3::before{
+        animation: none;
+    }
+    .home-content .text-animate h3::before{
+        display: none;
     }
     .home-content p{
         width: 76%;
