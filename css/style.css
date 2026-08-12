@@ -74,9 +74,7 @@ section{
     display: flex;
     align-items: center;
     padding: 0 9%;
-    background: url('../images/home.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
+    background: var(--bg-color);
 }
 .home-content{
     max-width: 60rem;
@@ -245,17 +243,29 @@ section{
     height: 100%;
     background: url('../images/human.jpg') center center / cover no-repeat;
     opacity: 1;
-    filter: drop-shadow(0 2rem 4rem rgba(0, 171, 240, 0.18));
-    transform: translateY(0);
-    transition: opacity .45s ease, filter .45s ease, transform .35s ease;
+    filter: none;
+    transform: translateY(0) scale(1);
+    transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1);
     z-index: 2;
     pointer-events: auto;
     cursor: pointer;
+    overflow: hidden;
+    animation: heroImageFloat 3s ease-in-out infinite alternate;
 }
 .home-imgHover:hover{
     opacity: 1;
     transform: scale(1.12) translateY(-6px);
-    filter: drop-shadow(0 3rem 5rem rgba(0, 171, 240, 0.28));
+    filter: none;
+    animation: none;
+}
+
+@keyframes heroImageFloat {
+    0% {
+        transform: translateY(0px) scale(1);
+    }
+    100% {
+        transform: translateY(-2px) scale(1.05);
+    }
 }
 .about{
     position: relative;
