@@ -250,6 +250,7 @@ section{
     opacity: .3;
 }
 .about{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -268,11 +269,13 @@ span{
     color: var(--main-color);
 }
 .about-grid{
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, minmax(18rem, 1fr));
     gap: 4rem;
     width: 100%;
     max-width: 120rem;
+    overflow: hidden;
 }
 .about-card{
     background: rgba(255, 255, 255, 0.05);
@@ -280,7 +283,14 @@ span{
     border-radius: 1.4rem;
     padding: 2rem;
     box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2);
-    transition: transform .35s ease, background .35s ease, border-color .35s ease;
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: transform .35s ease, background .35s ease, border-color .35s ease, opacity .35s ease;
+    transition-delay: calc(.12s * var(--i, 1));
+}
+.about.show-animate .about-card{
+    opacity: 1;
+    transform: translateY(0);
 }
 .about-card:hover{
     transform: translateY(-.5rem);
