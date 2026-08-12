@@ -273,30 +273,33 @@ span{
     position: relative;
     display: grid;
     grid-template-columns: repeat(3, minmax(18rem, 1fr));
-    gap: 4rem;
+    gap: 2rem;
     width: 100%;
     max-width: 120rem;
     overflow: hidden;
+    padding: 5rem;
 }
 .about-card{
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(17, 46, 66, 0.55);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.4rem;
     padding: 2rem;
     box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2);
     opacity: 0;
     transform: translateY(2rem);
-    transition: transform .35s ease, background .35s ease, border-color .35s ease, opacity .35s ease;
+    transition: transform .35s ease, background .35s ease, border-color .35s ease, opacity .35s ease, box-shadow .35s ease;
     transition-delay: calc(.12s * var(--i, 1));
 }
 .about.show-animate .about-card{
     opacity: 1;
     transform: translateY(0);
 }
-.about-card:hover{
-    transform: translateY(-.5rem);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(0, 171, 240, 0.4);
+.about.show-animate .about-card:hover{
+    transform: translateY(-.8rem) scale(1.2);
+    background: rgba(17, 46, 66, 0.8);
+    border-color: rgba(0, 171, 240, 0.8);
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 171, 240, 0.12);
+    z-index: 2;
 }
 .about-icon{
     display: inline-flex;
@@ -425,26 +428,21 @@ span{
 }
 .education-content .content{
     position: relative;
+    background: rgba(17, 46, 66, 0.55);
     padding: 1.5rem;
     border: .2rem solid var(--main-color);
     border-radius: .6rem;
     margin-bottom: 2rem;
     z-index: 1;
     overflow: hidden;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease, background .3s ease;
 }
-.education-content .content::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: var(--second-bg-color);
-    z-index: -1;
-    transition: .5s;
-}
-.education-content .content:hover::before{
-    width: 100%;
+.education-content .content:hover{
+    transform: translateY(-.8rem) scale(1.1);
+    background: rgba(17, 46, 66, 0.8);
+    border-color: rgba(0, 171, 240, 0.8);
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 171, 240, 0.12);
+    z-index: 2;
 }
 .education-content .content .year{
     font-size: 1.5rem;
@@ -539,28 +537,22 @@ span{
 
 .experience-content .content {
     position: relative;
+    background: rgba(17, 46, 66, 0.55);
     padding: 1.5rem;
     border: .2rem solid var(--main-color);
     border-radius: .6rem;
     margin-bottom: 2rem;
     z-index: 1;
     overflow: hidden;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease, background .3s ease;
 }
 
-.experience-content .content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: var(--second-bg-color);
-    z-index: -1;
-    transition: .5s;
-}
-
-.experience-content .content:hover::before {
-    width: 100%;
+.experience-content .content:hover {
+    transform: translateY(-.8rem) scale(1.1);
+    background: rgba(17, 46, 66, 0.8);
+    border-color: rgba(0, 171, 240, 0.8);
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 171, 240, 0.12);
+    z-index: 2;
 }
 
 .experience-content .content .year {
