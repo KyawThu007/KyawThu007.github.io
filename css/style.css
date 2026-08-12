@@ -66,6 +66,7 @@ body{
     display: none;
 }
 section{
+    position: relative;
     min-height: 100vh;
     padding: 10rem 9% 2rem;
 }
@@ -1039,6 +1040,7 @@ span{
     transform: translateX(-50%);
 }
 .contact-panel{
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 2.5rem;
@@ -1049,6 +1051,7 @@ span{
     border-radius: 2rem;
     padding: 3rem;
     box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.18);
+    overflow: hidden;
 }
 @media (max-width:900px) {
     .contact-panel {
