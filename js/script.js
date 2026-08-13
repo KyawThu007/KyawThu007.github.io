@@ -30,6 +30,7 @@ if (homeSection && homeImageHover) {
 
 let sections=document.querySelectorAll('section');
 let navLinks=document.querySelectorAll('header nav a');
+let skillsAutoRunning = false;
 
 window.onscroll = () => {
     sections.forEach(sec => {
@@ -44,9 +45,19 @@ window.onscroll = () => {
             const activeLink = document.querySelector('header nav a[href*="'+id+'"]');
             if (activeLink) activeLink.classList.add('active');
 
+            const wasShown = sec.classList.contains('show-animate');
             sec.classList.add('show-animate');
+            if (!wasShown && id === 'skills') {
+                // trigger auto hover on skills
+                triggerSkillsAutoHover();
+            }
         }else{
             sec.classList.remove('show-animate');
+            if (id === 'skills') {
+                // clear any running auto-hover state
+                skillsAutoRunning = false;
+                document.querySelectorAll('.skills-content .progress.auto-hover').forEach(el => el.classList.remove('auto-hover'));
+            }
         }
     });
     let header=document.querySelector('header');
@@ -157,6 +168,25 @@ function getProjectCardWidth() {
     const grid = projectCarousel.querySelector('.projects-grid');
     const gap = parseFloat(getComputedStyle(grid).gap) || 24;
     return card.getBoundingClientRect().width + gap;
+}
+
+function triggerSkillsAutoHover() {
+    if (skillsAutoRunning) return;
+    const items = Array.from(document.querySelectorAll('.skills-content .progress'));
+    if (!items.length) return;
+    skillsAutoRunning = true;
+    const baseDelay = 150;
+    const stay = 1800; // how long each item stays hovered
+    items.forEach((el, i) => {
+        const delay = i * baseDelay;
+        setTimeout(() => {
+            el.classList.add('auto-hover');
+            // remove after stay time
+            setTimeout(() => el.classList.remove('auto-hover'), stay);
+        }, delay);
+    });
+    // reset flag after full sequence
+    setTimeout(() => { skillsAutoRunning = false; }, items.length * baseDelay + stay + 200);
 }
 
 function updateProjectDots(index) {
