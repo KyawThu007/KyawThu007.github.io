@@ -4,9 +4,11 @@ let navbar=document.querySelector('.navbar');
 const homeSection = document.querySelector('.home');
 const homeImageHover = document.querySelector('.home-imgHover');
 
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
+if (menuIcon) {
+    menuIcon.onclick = () => {
+        menuIcon.classList.toggle('bx-x');
+        if (navbar) navbar.classList.toggle('active');
+    }
 }
 
 if (homeSection && homeImageHover) {
@@ -38,8 +40,9 @@ window.onscroll = () => {
         if(top>=offset && top<offset+height){
             navLinks.forEach(links => {
                 links.classList.remove('active');
-                document.querySelector('header nav a[href*='+id+']').classList.add('active');
             });
+            const activeLink = document.querySelector('header nav a[href*="'+id+'"]');
+            if (activeLink) activeLink.classList.add('active');
 
             sec.classList.add('show-animate');
         }else{
@@ -222,3 +225,71 @@ if (projectCarousel) {
     projectCarousel.addEventListener('mouseleave', startProjectAutoScroll);
     startProjectAutoScroll();
 }
+
+/* Paper unroll interaction */
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('paper unroll: init');
+    const paper = document.getElementById('paper');
+    const paperInner = document.querySelector('.paper-inner');
+    const paperWrap = document.getElementById('paperWrap');
+    const roller = document.querySelector('.paper-roller');
+    if (!paper || !paperWrap) {
+        console.log('paper unroll: missing elements', { paperExists: !!paper, paperWrapExists: !!paperWrap });
+        return;
+    }
+
+    let unrolling = false;
+
+    const easeOutQuint = t => 1 - Math.pow(1 - t, 5);
+
+    function animateUnroll(to = 1, duration = 2200) {
+        console.log('paper unroll: animate start', { to, duration });
+        if (unrolling) return;
+        unrolling = true;
+        const start = performance.now();
+        const from = parseFloat(getComputedStyle(paper).getPropertyValue('--unroll')) || 0;
+
+        function frame(now) {
+            const t = Math.min(1, (now - start) / duration);
+            const v = from + (to - from) * easeOutQuint(t);
+            paper.style.setProperty('--unroll', v);
+            paper.style.transform = `translateZ(0) rotateY(${(1 - v) * 8}deg)`;
+            if (t < 1) {
+                requestAnimationFrame(frame);
+            } else {
+                paper.style.setProperty('--unroll', to);
+                paper.style.transform = '';
+                unrolling = false;
+                console.log('paper unroll: animate complete', { to });
+                if (to === 1) {
+                    paper.classList.add('unrolled');
+                    if (paperInner) paperInner.classList.add('visible');
+                    if (roller) roller.style.opacity = '0';
+                    const prompt = document.querySelector('.paper-prompt');
+                    if (prompt) prompt.style.opacity = '0';
+                }
+            }
+        }
+        requestAnimationFrame(frame);
+    }
+
+    // trigger on click or significant scroll
+    paperWrap.addEventListener('click', () => animateUnroll(1, 2200));
+    let wheelDebounce = 0;
+    window.addEventListener('wheel', (e) => {
+        if (e.deltaY > 8 && Date.now() - wheelDebounce > 300) {
+            wheelDebounce = Date.now();
+            animateUnroll(1, 1800);
+        }
+    }, { passive: true });
+    // allow keyboard activation
+    paperWrap.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            animateUnroll(1, 2000);
+        }
+    });
+
+    // ensure starting state
+    paper.style.setProperty('--unroll', 0);
+});
