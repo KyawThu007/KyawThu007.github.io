@@ -13,7 +13,7 @@
     --bg-color:#081b29;
     --second-bg-color:#112e42;
     --text-color:#ededed;
-    --main-color:#00abf0;
+    --main-color:#dbdb3f;
 }
 html{
     font-size: 62.5%;
@@ -248,7 +248,7 @@ section{
     filter: none;
     transform: translateY(0) scale(1);
     transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1);
-    z-index: 2;
+    z-index: 3;
     pointer-events: auto;
     cursor: pointer;
     overflow: hidden;
@@ -259,6 +259,35 @@ section{
     transform: scale(1.12) translateY(-6px);
     filter: none;
     animation: none;
+}
+
+/* realistic soft shadow under human image */
+.home-imgHover::after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -6%;
+    width: 68%;
+    height: 18%;
+    transform: translateX(-50%) scaleX(1.05);
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.22) 35%, rgba(0,0,0,0) 70%);
+    filter: blur(18px);
+    opacity: .9;
+    transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
+    pointer-events: none;
+    z-index: 1;
+}
+.home-imgHover:hover::after{
+    transform: translateX(-50%) scaleX(1.12) translateY(-6px);
+    opacity: 1;
+}
+.home-imgHover.active::after{
+    transform: translateX(-50%) scaleX(1.18) translateY(-8px);
+    opacity: 1;
+}
+
+@media (max-width:780px){
+    .home-imgHover::after{ bottom: -10%; width: 80%; height: 14%; filter: blur(14px); }
 }
 
 @keyframes heroImageFloat {
@@ -314,7 +343,7 @@ span{
     padding: 5rem;
 }
 .about-card{
-    background: rgba(17, 46, 66, 0.55);
+    background: var(--bg-color);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.4rem;
     padding: 2rem;
@@ -330,8 +359,8 @@ span{
 }
 .about.show-animate .about-card:hover{
     transform: translateY(-.8rem) scale(1.2);
-    background: rgba(17, 46, 66, 0.8);
-    border-color: rgba(0, 171, 240, 0.8);
+    background: var(--bg-color);
+    border-color: var(--main-color);
     box-shadow: 0 1.5rem 2.5rem rgba(0, 171, 240, 0.12);
     z-index: 2;
 }
@@ -600,8 +629,8 @@ span{
 }
 .education-content .content:hover{
     transform: translateY(-.8rem) scale(1.1);
-    background: rgba(17, 46, 66, 0.8);
-    border-color: rgba(0, 171, 240, 0.8);
+    background: var(--second-bg-color);
+    border-color: var(--main-color);
     box-shadow: 0 1.5rem 2.5rem rgba(0, 171, 240, 0.12);
     z-index: 2;
 }
@@ -698,7 +727,7 @@ span{
 
 .experience-content .content {
     position: relative;
-    background: rgba(17, 46, 66, 0.55);
+    background: var(--bg-color);
     padding: 1.5rem;
     border: .2rem solid var(--main-color);
     border-radius: .6rem;
@@ -710,8 +739,8 @@ span{
 
 .experience-content .content:hover {
     transform: translateY(-.8rem) scale(1.1);
-    background: rgba(17, 46, 66, 0.8);
-    border-color: rgba(0, 171, 240, 0.8);
+    background: var(--bg-color);
+    border-color: var(--main-color);
     box-shadow: 0 1.5rem 2.5rem rgba(0, 171, 240, 0.12);
     z-index: 2;
 }
@@ -828,8 +857,8 @@ span{
 }
 .projects.show-animate .project-card:hover{
     transform: translateY(-0.8rem) scale(1.2);
-    border-color: rgba(0, 171, 240, 0.45);
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--second-bg-color);
+    border-color: var(--main-color);
     box-shadow: 0 2rem 3rem rgba(0, 171, 240, 0.14);
     z-index: 2;
 }
@@ -1251,7 +1280,7 @@ span{
     align-items: center;
     gap: 1rem;
     padding: 1.1rem 1.3rem;
-    background: rgba(255,255,255,0.05);
+    background: var(--second-bg-color);
     border-radius: 1rem;
     border: 1px solid rgba(255,255,255,0.08);
     transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease, background .3s ease;
@@ -1267,9 +1296,9 @@ span{
 }
 .contact-meta > *:hover{
     transform: translateY(-.8rem) scale(1.02);
-    background: rgba(17, 46, 66, 0.8);
-    border-color: rgba(0, 171, 240, 0.8);
-    box-shadow: 0 1.5rem 2.5rem rgba(0, 171, 240, 0.12);
+    background: var(--second-bg-color);
+    border-color: var(--main-color);
+    box-shadow: 0 1.5rem 2.5rem var(--second-bg-color);
 }
 .contact-meta i{
     color: var(--main-color);
@@ -1280,8 +1309,8 @@ span{
     font-size: 1.6rem;
 }
 .contact-meta .contact-copy.copied{
-    border-color: rgba(52, 211, 153, 0.8);
-    box-shadow: 0 1.5rem 2.5rem rgba(52, 211, 153, 0.12);
+    border-color: var(--main-color);
+    box-shadow: 0 1.5rem 2.5rem var(--main-color);
 }
 .contact form{
     text-align: left;
@@ -1311,7 +1340,7 @@ span{
 .contact form .textarea-field textarea:focus{
     outline: none;
     border-color: var(--main-color);
-    box-shadow: 0 0 0 0.3rem rgba(0,171,240,0.15);
+    box-shadow: 0 0 0 0.3rem var(--main-color);
 }
 .contact form .input-box .input-field input::placeholder,
 .contact form .textarea-field textarea::placeholder{
