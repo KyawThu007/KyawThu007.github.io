@@ -837,7 +837,7 @@ span{
     min-width: 26rem;
     max-width: 32rem;
     scroll-snap-align: start;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--second-bg-color);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.6rem;
     padding: 2rem;
@@ -1241,7 +1241,7 @@ span{
     gap: 2.5rem;
     max-width: 120rem;
     margin: 0 auto;
-    background: rgba(255,255,255,0.05);
+    background: var(--second-bg-color);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 2rem;
     padding: 3rem;
@@ -1331,7 +1331,7 @@ span{
     padding: 1.5rem 1.4rem;
     font-size: 1.6rem;
     color: var(--text-color);
-    background: rgba(255,255,255,0.05);
+    background: var(--second-bg-color);
     border-radius: 1rem;
     border: 1px solid rgba(255,255,255,0.16);
     transition: border-color .3s ease, box-shadow .3s ease;
