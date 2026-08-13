@@ -278,6 +278,7 @@ section{
 .education .heading,
 .experience .heading,
 .projects .heading,
+.skills .heading,
 .contact .heading {
     position: relative;
     font-size: 5rem;
