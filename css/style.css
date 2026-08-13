@@ -1097,6 +1097,19 @@ span{
     flex-direction: column;
     gap: .9rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform .35s ease, box-shadow .35s ease, background .35s ease, border-color .35s ease;
+    will-change: transform, box-shadow;
+    background: transparent;
+    border-radius: .8rem;
+    position: relative;
+    cursor: pointer;
+}
+.skills-content .progress:hover{
+    transform: translateY(-.8rem) scale(1.03);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 1.4rem 2.8rem rgba(0, 171, 240, 0.06);
+    border-color: rgba(0, 171, 240, 0.12);
+    z-index: 2;
 }
 .skills-content .progress:last-child{
     border-bottom: none;

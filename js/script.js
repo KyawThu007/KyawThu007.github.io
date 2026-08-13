@@ -292,4 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ensure starting state
     paper.style.setProperty('--unroll', 0);
+    // Initialize scroll-based animations which may add/remove overlays
+    if (typeof window.onscroll === 'function') {
+        try { window.onscroll(); } catch (e) { console.warn('initial scroll handler failed', e); }
+    }
 });
