@@ -618,9 +618,9 @@ span{
 }
 .education-content .content{
     position: relative;
-    background: rgba(17, 46, 66, 0.55);
+    background: var(--second-bg-color);
     padding: 1.5rem;
-    border: .2rem solid var(--second-bg-color);
+    border: .2rem solid var(--bg-color);
     border-radius: .6rem;
     margin-bottom: 2rem;
     z-index: 1;
