@@ -600,7 +600,7 @@ span{
 }
 .education-column .education-box{
     position: relative;
-    border-left: .2rem solid var(--main-color);
+    border-left: .2rem solid var(--second-bg-color);
 }
 .education-box .education-content{
     position: relative;
@@ -613,14 +613,14 @@ span{
     left: -1.1rem;
     width: 2rem;
     height: 2rem;
-    background: var(--main-color);
+    background: var(--second-bg-color);
     border-radius: 50%;
 }
 .education-content .content{
     position: relative;
     background: rgba(17, 46, 66, 0.55);
     padding: 1.5rem;
-    border: .2rem solid var(--main-color);
+    border: .2rem solid var(--second-bg-color);
     border-radius: .6rem;
     margin-bottom: 2rem;
     z-index: 1;
@@ -706,7 +706,7 @@ span{
 
 .experience-column .experience-box {
     position: relative;
-    border-left: .2rem solid var(--main-color);
+    border-left: .2rem solid var(--bg-color);
 }
 
 .experience-box .experience-content {
@@ -721,7 +721,7 @@ span{
     left: -1.1rem;
     width: 2rem;
     height: 2rem;
-    background: var(--main-color);
+    background: var(--bg-color);
     border-radius: 50%;
 }
 
@@ -729,7 +729,7 @@ span{
     position: relative;
     background: var(--bg-color);
     padding: 1.5rem;
-    border: .2rem solid var(--main-color);
+    border: .2rem solid var(--bg-color);
     border-radius: .6rem;
     margin-bottom: 2rem;
     z-index: 1;
