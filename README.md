@@ -1,123 +1,237 @@
-# Personal Portfolio - Kyaw Thu
+# 👋 Hi, I'm Kyaw Thu
 
-Welcome to my personal portfolio website. This is where I showcase my skills, education, experiences, and contact information. The website is designed with modern front-end technologies like HTML, CSS, JavaScript, and Bootstrap, along with smooth animations.
+### 💻 Full Stack Java Developer
 
-## Table of Contents
-- [About](#about)
-- [Education & Experience](#education--experience)
-- [Skills](#skills)
-- [Contact](#contact)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+I am a **Full Stack Java Developer** with a strong foundation in **Core Java, Object-Oriented Programming, backend development, and web technologies**.
+
+Currently, I work with **Java, Spring Boot, React, TypeScript, MySQL**, and also contribute to **Python-based AI projects**.
 
 ---
 
-## About
+## 🚀 About Me
 
-This portfolio is designed to highlight my journey as a **Java Developer**. It includes details about my educational background, my coding skills, and the projects I’ve worked on. You can also get in touch with me through the contact form available on the website.
-
----
-
-## Education & Experience
-
-I have a solid educational background in computer science and have worked on various projects during my studies. Here are a few highlights:
-
-- **University of Computer Study Taungoo (2016-2020)**: I learned HTML, CSS, JavaScript, Java, and other programming languages.
-- **Self-Study (2020-2023)**: I have been improving my knowledge of Java, PHP, and web development in my spare time.
-- **University of Computer Study Taungoo (2023-2024)**: I am currently learning Java, Python, and AWS.
-
-### Projects Developed:
-- Developed apps in Android Studio such as a **Burmese Law app** and **Taungoo Directory app**.
-- Worked on a **Dental Clinic System** in C# and other web-based systems.
-  
-You can find more details and code repositories on my GitHub:
-
-- [KyawThuHtwe GitHub](https://github.com/KyawThuHtwe)
-- [KyawThu007 GitHub](https://github.com/KyawThu007)
+* 💻 Full Stack Java Developer
+* ☕ Strong foundation in Java & OOP
+* 🌱 Interested in scalable and maintainable software development
+* 🔧 Experienced in backend API and database development
+* 🤖 Contributing to Python-based AI projects
+* 🌐 Interested in full-stack web application development
+* 💼 Open to freelance and remote opportunities
 
 ---
 
-## Skills
+## 🛠️ Tech Stack
 
-My core skills are in **Java** and **web development**, with proficiency in the following technologies:
+### Backend
 
-- **HTML** (90%)
-- **CSS** (80%)
-- **JavaScript** (65%)
-- **PHP** (60%)
-- **Bootstrap** (30%)
-- **jQuery** (20%)
-- **C#** (50%)
-- **Java** (70%)
+* ☕ Java
+* 🌱 Spring Boot
+* 🐍 Python
+* PHP
+* C#
 
----
+### Frontend
 
-## Contact
+* ⚛️ React
+* 📘 TypeScript
+* JavaScript
+* HTML5
+* CSS3
+* Bootstrap
+* jQuery
 
-Feel free to reach out to me via the contact form in the portfolio or through the following:
+### Database
 
-- **Email**: [kyawthu677288@example.com]
+* 🐬 MySQL
+* PostgreSQL
+* Oracle Database
+* Supabase
 
----
+### Cloud & Tools
 
-## Installation
-
-To run the portfolio website locally, follow these steps:
-
-### Prerequisites
-- **XAMPP** (or another local server stack to run PHP and MySQL).
-- A **web browser** (e.g., Chrome, Firefox).
-- A **text editor** (e.g., VSCode, Sublime) to modify the source code.
-
-### Steps to run locally:
-1. **Download and Install XAMPP** from [Apache Friends](https://www.apachefriends.org/index.html).
-2. **Setup the Database**:
-   - Open **phpMyAdmin** and create a database named `portfolio`.
-   - Import the `database.sql` file from the project directory into phpMyAdmin.
-3. **Move Project Files**:
-   - Place the cloned repository in the `htdocs` folder (e.g., `C:\xampp\htdocs\portfolio`).
-4. **Start XAMPP Servers**:
-   - Launch the **XAMPP Control Panel**, and start both **Apache** and **MySQL**.
-5. **Access the Website**:
-   - Open your browser and visit `http://localhost/portfolio/` to see the website in action.
+* ☁️ AWS
+* Git
+* GitHub
+* NetBeans
+* Android Studio
 
 ---
 
-## Usage
+## 📊 Skills
 
-- **User Interaction**: 
-   - The website is interactive and includes sections for **about me**, **skills**, **education**, **projects**, and **contact**.
-   - The navigation bar helps you quickly jump to each section.
-
-- **Responsive Design**: 
-   - The design is fully responsive, thanks to **Bootstrap** and **CSS** media queries.
-
----
-
-## Contributing
-
-If you would like to contribute to the project, follow these steps:
-
-1. **Fork** the repository.
-2. **Clone** the repository to your local machine.
-3. **Create a branch** (`git checkout -b feature-name`).
-4. **Make your changes**.
-5. **Commit** the changes (`git commit -am 'Add new feature'`).
-6. **Push** your branch (`git push origin feature-name`).
-7. **Open a pull request**.
+| Technology      | Level |
+| --------------- | ----: |
+| HTML            |   90% |
+| CSS             |   80% |
+| Java            |   70% |
+| JavaScript      |   65% |
+| PHP             |   60% |
+| MySQL           |   60% |
+| C#              |   50% |
+| Python          |   50% |
+| Laravel         |   40% |
+| PostgreSQL      |   40% |
+| Spring Boot     |   35% |
+| AWS             |   30% |
+| Oracle Database |   30% |
+| Supabase        |   30% |
+| Bootstrap       |   30% |
+| jQuery          |   20% |
 
 ---
 
-## License
+## 💼 Experience
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+### GIC Myanmar Co., Ltd.
+
+**Full Stack Java Developer | 2025 - Present**
+
+Working on scalable web applications using:
+
+* Java
+* Spring Boot
+* React
+* TypeScript
+* MySQL
+* Python
+* AI-powered features
+* Backend automation
+
+I develop responsive frontends, secure backend APIs, and database solutions while collaborating with cross-functional teams.
+
+### University / Self Study
+
+During my studies and self-learning period, I worked on multiple applications including:
+
+* Burmese Law application
+* Taungoo Directory application
+* Dental Clinic Management System
+* POS and Accounting applications
+* Dynamic Quiz System
+* Cinema Management System
+* Cinema Feedback & Rating System
 
 ---
 
-## Acknowledgments
+## 📂 Featured Projects
 
-- Thanks to **Bootstrap** for the responsive grid system and components.
-- Special thanks to **FontAwesome** and **Boxicons** for providing the awesome icons used in this project.
-- This project was created as a personal portfolio to showcase my skills and projects.
+### 💬 Chat App
+
+Real-time chat application built using PHP and JavaScript.
+
+**Tech:** PHP, Blade, JavaScript, HTML, CSS
+
+🔗 [GitHub Repository](https://github.com/KyawThu007/chat-app)
+
+### 📝 Quiz App
+
+Simple quiz application built with PHP and HTML/CSS.
+
+**Tech:** PHP, HTML, CSS
+
+🔗 [GitHub Repository](https://github.com/KyawThu007/quiz)
+
+### 🎬 Cinema Management System
+
+Cinema management system developed using Java and NetBeans with RMI.
+
+**Tech:** Java, NetBeans, RMI
+
+🔗 [GitHub Repository](https://github.com/KyawThu007/CinemaSystem)
+
+### 📚 Grammar Learning App
+
+Android grammar learning application developed using Android Studio.
+
+**Tech:** Java, HTML, CSS
+
+🔗 [GitHub Repository](https://github.com/KyawThuHtwe/Grammar_Learning)
+
+### 📖 Sayan App
+
+Android application developed using Android Studio and Java.
+
+**Tech:** Java, Android Studio
+
+🔗 [GitHub Repository](https://github.com/KyawThuHtwe/Sayan)
+
+### 📱 Android Learning App
+
+Android learning application developed using Java.
+
+**Tech:** Java, Android Studio
+
+🔗 [GitHub Repository](https://github.com/KyawThuHtwe/AndroidLearning)
+
+The projects and repository links above are taken from the portfolio source.
+
+---
+
+## 🎓 Education
+
+### University of Computer Studies, Taungoo
+
+**2016 - 2020**
+
+Studied:
+
+* HTML
+* CSS
+* JavaScript
+* Bootstrap
+* Java
+* C++
+* C#
+
+### Self Study
+
+**2020 - 2023**
+
+Focused on:
+
+* Java
+* PHP
+* Web Development
+* Object-Oriented Programming
+* Databases
+* Server-side scripting
+
+### University of Computer Studies, Taungoo
+
+**2023 - 2024**
+
+Focused on:
+
+* Java
+* Python
+* AWS
+
+---
+
+## 📫 Contact
+
+📧 **Email:** [kyawthu677288@gmail.com](mailto:kyawthu677288@gmail.com)
+
+📱 **Phone:** +95 9 677288053
+
+💼 **Available for:** Freelance & Remote Work
+
+### GitHub
+
+* [KyawThuHtwe](https://github.com/KyawThuHtwe)
+* [KyawThu007](https://github.com/KyawThu007)
+
+---
+
+## 🤝 Let's Connect
+
+I'm interested in collaborating on:
+
+* 🌐 Full Stack Web Applications
+* ☕ Java / Spring Boot Projects
+* ⚛️ React Applications
+* 🐍 Python / AI Projects
+* 📱 Android Applications
+* 🚀 Open Source Projects
+
+**Let's build something great together! 🚀**
