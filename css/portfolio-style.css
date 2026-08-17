@@ -92,7 +92,7 @@ section{
 }
 .home-content .text-animate{
     position: relative;
-    width: 26rem;
+    width: 34rem;
 }
 .home-content .text-animate h3{
     font-size: 3.2rem;
@@ -102,7 +102,7 @@ section{
     background-image: linear-gradient(var(--main-color),var(--main-color));
     background-repeat: no-repeat;
     -webkit-background-clip: text;
-    background-position: -26rem 0;
+    background-position: -34rem 0;
     position: relative; /* ensure pseudo-caret positions correctly */
 }
 .home.show-animate .home-content .text-animate h3{
@@ -1688,7 +1688,7 @@ section:nth-child(odd) .animate.scroll,
 /* KEYFRAMES ANIMATION */
 @keyframes homeBgText{
     0%,10%,100%{
-        background-position: -26rem 0;
+        background-position: -34rem 0;
     }
     65%,85%{
         background-position: 0 0;

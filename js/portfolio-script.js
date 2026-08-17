@@ -303,8 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(frame);
     }
 
-    // trigger on click or significant scroll
-    paperWrap.addEventListener('click', () => animateUnroll(1, 2200));
+    // trigger significant scroll
     let wheelDebounce = 0;
     window.addEventListener('wheel', (e) => {
         if (e.deltaY > 8 && Date.now() - wheelDebounce > 300) {
