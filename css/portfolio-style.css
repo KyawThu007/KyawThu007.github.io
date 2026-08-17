@@ -338,7 +338,7 @@ span{
     grid-template-columns: repeat(3, minmax(18rem, 1fr));
     gap: 2rem;
     width: 100%;
-    max-width: 120rem;
+    max-width: 122rem;
     overflow: hidden;
     padding: 5rem;
 }
