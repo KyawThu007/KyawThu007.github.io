@@ -1252,7 +1252,7 @@ span {
 .skills .skills-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
-    gap: 4rem;
+    gap: 2rem;
 }
 
 .skills-row .skills-column {
