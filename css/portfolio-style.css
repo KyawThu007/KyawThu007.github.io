@@ -993,7 +993,6 @@ span {
     transform: translateY(-0.8rem) scale(1.2);
     background: var(--second-bg-color);
     border-color: var(--main-color);
-    box-shadow: 0 2rem 3rem rgba(0, 171, 240, 0.14);
     z-index: 2;
 }
 
