@@ -938,7 +938,6 @@ span {
     align-items: center;
     gap: 1rem;
     max-width: 130rem;
-    margin: 3rem auto 0;
     overflow: hidden;
 }
 
@@ -960,15 +959,15 @@ span {
 .projects-grid {
     display: flex;
     gap: 2rem;
-    padding: 4rem;
+    padding: 5rem;
     width: max-content;
     scroll-snap-type: x mandatory;
 }
 
 .project-card {
     flex: 0 0 calc((100% - 4rem) / 3);
-    min-width: 26rem;
-    max-width: 32rem;
+    min-width: 28rem;
+    max-width: 34rem;
     scroll-snap-align: start;
     background: var(--second-bg-color);
     border: 1px solid rgba(255, 255, 255, 0.08);
