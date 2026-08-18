@@ -95,6 +95,14 @@ const player = {
 
   h: 50,
 
+  normalW: 50,
+
+  normalH: 50,
+
+  duckW: 70,
+
+  duckH: 36,
+
   vy: 0,
 
   ducking: false,
@@ -117,11 +125,8 @@ const player = {
 
 let view = {
   width: 0,
-
   height: 0,
-
   groundY: 0,
-
   dpr: 1
 };
 
@@ -145,129 +150,10 @@ let touchStart = null;
 
 
 /* =========================================================
-   GOOGLE CHROME STYLE DINO SPRITES
-   RIGHT-FACING DINO
-=========================================================
-
-   run1 = LEFT LEG FORWARD
-   run2 = RIGHT LEG FORWARD
-
-   1 = pixel
-   0 = transparent
-
-========================================================= */
-
-const DINO_SPRITES = {
-
-  /* =======================================================
-     RUN 1
-     LEFT LEG FORWARD
-  ======================================================= */
-
-  run1: [
-    "000000000000000000111111000",
-    "000000000000000000111111100",
-    "000000000000000000111111110",
-    "000000000000000000101111111",
-    "000000000000000000111111111",
-    "000000000000000000111111110",
-    "000000000000000000111111100",
-    "000000000000000000111111000",
-    "000000000000000000111110000",
-    "000000000000000001111100000",
-    "000000000000000011111100000",
-    "000000000000001111111111110",
-    "000000000000111111111100000",
-    "000000000001111111111111100",
-    "000110000011111111111100000",
-    "001100000111111111111100000",
-    "001111001111111111111100000",
-    "001111111111111111111000000",
-    "000111111111111111111000000",
-    "000001111111111111111100000",
-    "000000011111111111111110000",
-    "000000000111111001111110000",
-    "000000000011110000111100000",
-    "000000000011000000110000000",
-    "000000000011100000000000000"
-  ],
-
-
-  /* =======================================================
-     RUN 2
-     RIGHT LEG FORWARD
-  ======================================================= */
-
-  run2: [
-    "000000000000000000111111000",
-    "000000000000000000111111100",
-    "000000000000000000111111110",
-    "000000000000000000111111111",
-    "000000000000000000111111111",
-    "000000000000000000111111110",
-    "000000000000000000111111100",
-    "000000000000000000111111000",
-    "000000000000000000111110000",
-    "000000000000000001111100000",
-    "000000000000000011111100000",
-    "000000000000001111111111100",
-    "000000000000111111111100000",
-    "000000000001111111111111110",
-    "000000000011111111111100000",
-    "000000000111111111111100000",
-    "000000001111111111111100000",
-    "000000011111111111111000000",
-    "000000111111111111111000000",
-    "000001111111111111111100000",
-    "000011111111111111111110000",
-    "000111100111111001111110000",
-    "001110000011110000111100000",
-    "011000000011000000110000000",
-    "000000000000000000111000000"
-  ],
-
-
-  /* =======================================================
-     JUMP
-  ======================================================= */
-
-  jump: [
-    "000000000000000000111111000",
-    "000000000000000000111111100",
-    "000000000000000000111111110",
-    "000000000000000000101111111",
-    "000000000000000000111111111",
-    "000000000000000000111111110",
-    "000000000000000000111111100",
-    "000000000000000000111111000",
-    "000000000000000000111110000",
-    "000000000000000001111100000",
-    "000000000000000011111100000",
-    "000000000000001111111111110",
-    "000000000000111111111100000",
-    "000000000001111111111111100",
-    "000110000011111111111100000",
-    "001100000111111111111100000",
-    "001111001111111111111100000",
-    "001111111111111111111000000",
-    "000111111111111111111000000",
-    "000001111111111111111100000",
-    "000000011111111111111111000",
-    "000000000111111000011111100",
-    "000000001110000000001100000",
-    "000000111000000000000111000",
-    "000000000000000000000000000"
-  ]
-
-};
-
-
-/* =========================================================
    INITIALIZATION
 ========================================================= */
 
 function init() {
-
   state.highScore = Number(
     localStorage.getItem("runnerHighScore") || 0
   );
@@ -318,7 +204,6 @@ function init() {
 ========================================================= */
 
 function resizeCanvas() {
-
   const rect =
     canvas.getBoundingClientRect();
 
@@ -347,7 +232,6 @@ function resizeCanvas() {
 
 
   view = {
-
     width: rect.width,
 
     height: rect.height,
@@ -371,7 +255,6 @@ function resizeCanvas() {
 ========================================================= */
 
 function resetGame() {
-
   state.started = false;
 
   state.running = false;
@@ -414,9 +297,9 @@ function resetGame() {
 
   player.animationTimer = 0;
 
-  player.w = 50;
+  player.w = player.normalW;
 
-  player.h = 50;
+  player.h = player.normalH;
 
   player.y =
     view.groundY -
@@ -434,7 +317,6 @@ function resetGame() {
 ========================================================= */
 
 function startGame() {
-
   if (state.gameOver) {
     resetGame();
   }
@@ -454,7 +336,6 @@ function startGame() {
 ========================================================= */
 
 function pauseGame() {
-
   if (
     !state.allowPause ||
     !state.started ||
@@ -475,7 +356,6 @@ function pauseGame() {
 ========================================================= */
 
 function endGame() {
-
   state.running = false;
 
   state.gameOver = true;
@@ -487,7 +367,6 @@ function endGame() {
     state.score >
     state.highScore
   ) {
-
     state.highScore =
       Math.floor(state.score);
 
@@ -511,7 +390,6 @@ function endGame() {
 ========================================================= */
 
 function updateHud() {
-
   scoreEl.textContent =
     Math.floor(state.score);
 
@@ -525,7 +403,6 @@ function updateHud() {
 ========================================================= */
 
 function updateOverlays() {
-
   startOverlay.classList.toggle(
     "hidden",
     state.started
@@ -549,7 +426,6 @@ function updateOverlays() {
 ========================================================= */
 
 function loop(timestamp) {
-
   if (!lastTime) {
     lastTime = timestamp;
   }
@@ -569,7 +445,6 @@ function loop(timestamp) {
     state.running &&
     !state.paused
   ) {
-
     update(dt);
   }
 
@@ -585,7 +460,6 @@ function loop(timestamp) {
 ========================================================= */
 
 function update(dt) {
-
   state.score +=
     dt * 10;
 
@@ -604,7 +478,6 @@ function update(dt) {
   ------------------------------------------------------- */
 
   if (state.score >= 400) {
-
     state.score = 400;
 
     state.running = false;
@@ -613,10 +486,8 @@ function update(dt) {
 
 
     setTimeout(() => {
-
       window.location.href =
         "portfolio.html";
-
     }, 500);
 
     return;
@@ -641,7 +512,6 @@ function update(dt) {
     state.spawnTimer >=
     state.nextSpawn * spawnWindow
   ) {
-
     spawnObstacle();
 
     state.spawnTimer = 0;
@@ -675,7 +545,6 @@ function update(dt) {
 ========================================================= */
 
 function updatePlayer(dt) {
-
   let gravityScale = 1;
 
 
@@ -689,7 +558,6 @@ function updatePlayer(dt) {
     player.jumpHoldTime <
     config.maxJumpHold
   ) {
-
     gravityScale =
       config.jumpHoldGravity;
 
@@ -719,7 +587,6 @@ function updatePlayer(dt) {
     view.groundY -
     player.h
   ) {
-
     player.y =
       view.groundY -
       player.h;
@@ -731,44 +598,38 @@ function updatePlayer(dt) {
     player.jumpHeld = false;
 
     player.jumpHoldTime = 0;
-
   } else {
-
     player.onGround = false;
   }
 
 
   /* -------------------------------------------------------
-     Duck
+     DUCKING
   ------------------------------------------------------- */
 
   if (
     player.ducking &&
     player.onGround
   ) {
+    player.w = player.duckW;
 
-    player.h = 36;
-
-    player.w = 52;
+    player.h = player.duckH;
 
     player.y =
       view.groundY -
       player.h;
   }
 
-
   /* -------------------------------------------------------
-     Normal
+     NORMAL
   ------------------------------------------------------- */
 
   else {
+    player.w = player.normalW;
 
-    player.h = 50;
-
-    player.w = 50;
+    player.h = player.normalH;
 
     if (player.onGround) {
-
       player.y =
         view.groundY -
         player.h;
@@ -778,16 +639,6 @@ function updatePlayer(dt) {
 
   /* -------------------------------------------------------
      RUNNING ANIMATION
-     
-     0.08 seconds:
-     
-     LEFT LEG
-        ↓
-     RIGHT LEG
-        ↓
-     LEFT LEG
-        ↓
-     RIGHT LEG
   ------------------------------------------------------- */
 
   if (
@@ -795,7 +646,6 @@ function updatePlayer(dt) {
     state.running &&
     !state.reducedMotion
   ) {
-
     player.animationTimer += dt;
 
 
@@ -803,7 +653,6 @@ function updatePlayer(dt) {
       player.animationTimer >=
       0.08
     ) {
-
       player.animationTimer = 0;
 
       player.animationFrame =
@@ -820,7 +669,6 @@ function updatePlayer(dt) {
 ========================================================= */
 
 function updateObstacles(dt) {
-
   const speed =
     state.speed;
 
@@ -828,7 +676,6 @@ function updateObstacles(dt) {
   for (
     const obstacle of state.obstacles
   ) {
-
     obstacle.x -=
       speed * dt;
 
@@ -841,7 +688,6 @@ function updateObstacles(dt) {
       obstacle.type === "bird" &&
       !state.reducedMotion
     ) {
-
       obstacle.wingTimer += dt;
 
 
@@ -849,7 +695,6 @@ function updateObstacles(dt) {
         obstacle.wingTimer >
         0.15
       ) {
-
         obstacle.wingTimer = 0;
 
         obstacle.wingUp =
@@ -871,7 +716,6 @@ function updateObstacles(dt) {
   ------------------------------------------------------- */
 
   if (!state.reducedMotion) {
-
     state.groundOffset +=
       speed * dt * 0.6;
   }
@@ -883,12 +727,10 @@ function updateObstacles(dt) {
 ========================================================= */
 
 function updateDayNight(dt) {
-
   state.dayTimer += dt;
 
 
   if (state.dayTimer > 18) {
-
     state.dayTimer = 0;
 
     state.day =
@@ -897,7 +739,6 @@ function updateDayNight(dt) {
 
 
   if (state.reducedMotion) {
-
     state.dayBlend =
       state.day ? 1 : 0;
 
@@ -925,7 +766,6 @@ function updateDayNight(dt) {
 ========================================================= */
 
 function spawnObstacle() {
-
   const allowBirds =
     state.score > 120;
 
@@ -943,9 +783,7 @@ function spawnObstacle() {
   ------------------------------------------------------- */
 
   if (spawnBird) {
-
     obstacle = {
-
       type: "bird",
 
       x:
@@ -971,13 +809,11 @@ function spawnObstacle() {
   ------------------------------------------------------- */
 
   else {
-
     const tall =
       Math.random() > 0.55;
 
 
     obstacle = {
-
       type: "cactus",
 
       x:
@@ -1007,7 +843,6 @@ function spawnObstacle() {
 
 
   if (last) {
-
     const minGap =
       140 +
       state.speed * 0.18;
@@ -1035,10 +870,8 @@ function spawnObstacle() {
 ========================================================= */
 
 function checkCollision() {
-
   const playerBox =
     getHitbox({
-
       x: player.x,
 
       y: player.y,
@@ -1051,10 +884,8 @@ function checkCollision() {
 
   return state.obstacles.some(
     (obs) => {
-
       const obsBox =
         getHitbox({
-
           x: obs.x,
 
           y: obs.y,
@@ -1066,7 +897,6 @@ function checkCollision() {
 
 
       return (
-
         playerBox.x <
         obsBox.x +
         obsBox.w &&
@@ -1093,7 +923,6 @@ function checkCollision() {
 ========================================================= */
 
 function render() {
-
   ctx.clearRect(
     0,
     0,
@@ -1142,7 +971,6 @@ function render() {
 ========================================================= */
 
 function drawSunMoon() {
-
   const x =
     view.width - 80;
 
@@ -1187,7 +1015,6 @@ function drawSunMoon() {
 ========================================================= */
 
 function drawClouds() {
-
   if (state.reducedMotion) {
     return;
   }
@@ -1203,7 +1030,6 @@ function drawClouds() {
 
 
   const positions = [
-
     {
       x:
         view.width * 0.18 -
@@ -1224,14 +1050,12 @@ function drawClouds() {
 
   positions.forEach(
     (cloud) => {
-
       let x =
         cloud.x %
         (view.width + 140);
 
 
       if (x < -100) {
-
         x +=
           view.width + 140;
       }
@@ -1254,7 +1078,6 @@ function drawClouds() {
 ========================================================= */
 
 function drawCloud(x, y) {
-
   ctx.fillRect(
     x,
     y + 8,
@@ -1285,7 +1108,6 @@ function drawCloud(x, y) {
 ========================================================= */
 
 function drawGround() {
-
   ctx.strokeStyle =
     state.day
       ? "#535353"
@@ -1328,7 +1150,6 @@ function drawGround() {
     x < view.width;
     x += tickSpacing
   ) {
-
     ctx.beginPath();
 
 
@@ -1350,62 +1171,37 @@ function drawGround() {
 
 
 /* =========================================================
-   PIXEL SPRITE DRAWER
+   DINOSAUR
 ========================================================= */
 
-function drawPixelSprite(
-  sprite,
-  x,
-  y,
-  pixelSize
-) {
-
-  sprite.forEach(
-    (row, rowIndex) => {
-
-      for (
-        let columnIndex = 0;
-        columnIndex < row.length;
-        columnIndex++
-      ) {
-
-        if (
-          row[columnIndex] !== "1"
-        ) {
-          continue;
-        }
+function drawPlayer() {
+  ctx.save();
 
 
-        ctx.fillRect(
-
-          Math.floor(
-            x +
-            columnIndex *
-            pixelSize
-          ),
-
-          Math.floor(
-            y +
-            rowIndex *
-            pixelSize
-          ),
-
-          pixelSize,
-
-          pixelSize
-        );
-      }
-    }
+  drawDinosaur(
+    player.x,
+    player.y,
+    player.w,
+    player.h,
+    player.ducking
   );
+
+
+  ctx.restore();
 }
 
 
 /* =========================================================
-   PLAYER / DINO
+   DRAW DINOSAUR ANIMAL
 ========================================================= */
 
-function drawPlayer() {
-
+function drawDinosaur(
+  x,
+  y,
+  width,
+  height,
+  ducking = false
+) {
   ctx.save();
 
 
@@ -1419,81 +1215,540 @@ function drawPlayer() {
     dinoColor;
 
 
-  const x =
-    Math.floor(player.x);
-
-  const y =
-    Math.floor(player.y);
-
-
-  const pixelSize = 2;
-
-
-  let sprite;
-
-
-  /* -------------------------------------------------------
-     DUCK
-  ------------------------------------------------------- */
-
-  if (player.ducking) {
-
-    sprite =
-      DINO_SPRITES.duck;
-  }
+  /*
+   * Base dinosaur design:
+   *
+   *       HEAD
+   *        ████
+   *       ██████
+   *          █
+   *       █████
+   *    ███████████
+   *  ██████████████
+   *       ██ ██
+   *      ██   ██
+   *
+   * Tail -> body -> head
+   */
 
 
-  /* -------------------------------------------------------
-     JUMP
-  ------------------------------------------------------- */
+  const scaleX =
+    width / 100;
 
-  else if (!player.onGround) {
-
-    sprite =
-      DINO_SPRITES.jump;
-  }
+  const scaleY =
+    height / 100;
 
 
-  /* -------------------------------------------------------
-     RUNNING
-  ------------------------------------------------------- */
-
-  else if (
-    state.running &&
-    !state.reducedMotion
-  ) {
-
-    sprite =
-      player.animationFrame === 0
-        ? DINO_SPRITES.run1
-        : DINO_SPRITES.run2;
-  }
-
-
-  /* -------------------------------------------------------
-     STANDING
-  ------------------------------------------------------- */
-
-  else {
-
-    sprite =
-      DINO_SPRITES.run1;
-  }
-
-
-  /* -------------------------------------------------------
-     Draw dinosaur
-  ------------------------------------------------------- */
-
-  drawPixelSprite(
-    sprite,
+  ctx.translate(
     x,
-    y,
-    pixelSize
+    y
   );
 
 
+  ctx.scale(
+    scaleX,
+    scaleY
+  );
+
+
+  if (ducking) {
+    drawDinosaurCrouching();
+  } else {
+    drawDinosaurStanding();
+  }
+
+
   ctx.restore();
+}
+
+
+/* =========================================================
+   STANDING DINOSAUR
+========================================================= */
+
+function drawDinosaurStanding() {
+
+  const color =
+    state.day
+      ? "#535353"
+      : "#e6e6e6";
+
+
+  ctx.fillStyle = color;
+
+
+  /*
+   * -------------------------------------------------------
+   * TAIL
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    5,
+    57,
+    28,
+    9
+  );
+
+  ctx.fillRect(
+    0,
+    62,
+    18,
+    8
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * BODY
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    25,
+    40,
+    45,
+    38
+  );
+
+  ctx.fillRect(
+    32,
+    35,
+    30,
+    45
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * BACK
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    35,
+    32,
+    25,
+    8
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * NECK
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    61,
+    22,
+    15,
+    35
+  );
+
+
+  ctx.fillRect(
+    66,
+    18,
+    12,
+    30
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * HEAD
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    70,
+    10,
+    24,
+    28
+  );
+
+
+  ctx.fillRect(
+    77,
+    6,
+    16,
+    30
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * SNOUT
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    88,
+    20,
+    12,
+    14
+  );
+
+
+  ctx.fillRect(
+    94,
+    25,
+    6,
+    7
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * EYE
+   * -------------------------------------------------------
+   */
+
+  ctx.fillStyle =
+    state.day
+      ? "#f7f7f7"
+      : "#111";
+
+
+  ctx.fillRect(
+    87,
+    14,
+    4,
+    4
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * MOUTH
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    88,
+    34,
+    10,
+    2
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * ARM
+   * -------------------------------------------------------
+   */
+
+  ctx.fillStyle =
+    state.day
+      ? "#535353"
+      : "#e6e6e6";
+
+
+  ctx.fillRect(
+    64,
+    46,
+    7,
+    20
+  );
+
+
+  ctx.fillRect(
+    68,
+    62,
+    13,
+    5
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * BACK LEG
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    32,
+    70,
+    13,
+    25
+  );
+
+
+  ctx.fillRect(
+    25,
+    90,
+    24,
+    7
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * FRONT LEG
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    54,
+    70,
+    13,
+    25
+  );
+
+
+  ctx.fillRect(
+    49,
+    90,
+    24,
+    7
+  );
+}
+
+
+/* =========================================================
+   CROUCHING DINOSAUR
+========================================================= */
+
+function drawDinosaurCrouching() {
+
+  const color =
+    state.day
+      ? "#535353"
+      : "#e6e6e6";
+
+
+  ctx.fillStyle = color;
+
+
+  /*
+   * -------------------------------------------------------
+   * LONG TAIL
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    2,
+    57,
+    32,
+    9
+  );
+
+
+  ctx.fillRect(
+    0,
+    62,
+    20,
+    7
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * LOW BODY
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    20,
+    43,
+    52,
+    32
+  );
+
+
+  ctx.fillRect(
+    28,
+    38,
+    35,
+    40
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * BACK
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    30,
+    35,
+    30,
+    8
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * NECK
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    62,
+    27,
+    14,
+    32
+  );
+
+
+  ctx.fillRect(
+    67,
+    23,
+    11,
+    28
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * HEAD
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    71,
+    17,
+    24,
+    25
+  );
+
+
+  ctx.fillRect(
+    78,
+    13,
+    16,
+    27
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * SNOUT
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    88,
+    26,
+    12,
+    13
+  );
+
+
+  ctx.fillRect(
+    94,
+    30,
+    6,
+    6
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * EYE
+   * -------------------------------------------------------
+   */
+
+  ctx.fillStyle =
+    state.day
+      ? "#f7f7f7"
+      : "#111";
+
+
+  ctx.fillRect(
+    87,
+    21,
+    4,
+    4
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * MOUTH
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    89,
+    38,
+    9,
+    2
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * SMALL ARM
+   * -------------------------------------------------------
+   */
+
+  ctx.fillStyle =
+    state.day
+      ? "#535353"
+      : "#e6e6e6";
+
+
+  ctx.fillRect(
+    65,
+    48,
+    7,
+    17
+  );
+
+
+  ctx.fillRect(
+    69,
+    61,
+    13,
+    5
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * REAR LEG
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    30,
+    68,
+    14,
+    22
+  );
+
+
+  ctx.fillRect(
+    24,
+    87,
+    25,
+    7
+  );
+
+
+  /*
+   * -------------------------------------------------------
+   * FRONT LEG
+   * -------------------------------------------------------
+   */
+
+  ctx.fillRect(
+    53,
+    68,
+    14,
+    22
+  );
+
+
+  ctx.fillRect(
+    48,
+    87,
+    25,
+    7
+  );
 }
 
 
@@ -1502,19 +1757,14 @@ function drawPlayer() {
 ========================================================= */
 
 function drawObstacles() {
-
   for (
     const obs of state.obstacles
   ) {
-
     if (
       obs.type === "cactus"
     ) {
-
       drawCactus(obs);
-
     } else {
-
       drawBird(obs);
     }
   }
@@ -1526,10 +1776,8 @@ function drawObstacles() {
 ========================================================= */
 
 function drawCactus(obs) {
-
   const x =
     Math.floor(obs.x);
-
 
   const y =
     Math.floor(obs.y);
@@ -1544,7 +1792,9 @@ function drawCactus(obs) {
   const pixel = 4;
 
 
-  /* Main trunk */
+  /*
+   * Main trunk
+   */
 
   ctx.fillRect(
     x +
@@ -1562,12 +1812,12 @@ function drawCactus(obs) {
   );
 
 
-  /* Left arm */
+  /*
+   * Left arm
+   */
 
   if (obs.h > 40) {
-
     ctx.fillRect(
-
       x,
 
       y +
@@ -1584,7 +1834,6 @@ function drawCactus(obs) {
 
 
     ctx.fillRect(
-
       x,
 
       y +
@@ -1600,10 +1849,11 @@ function drawCactus(obs) {
   }
 
 
-  /* Right arm */
+  /*
+   * Right arm
+   */
 
   ctx.fillRect(
-
     x +
     Math.floor(
       obs.w * 0.65
@@ -1623,7 +1873,6 @@ function drawCactus(obs) {
 
 
   ctx.fillRect(
-
     x +
     obs.w -
     pixel,
@@ -1639,10 +1888,11 @@ function drawCactus(obs) {
   );
 
 
-  /* Top pixel */
+  /*
+   * Top pixel
+   */
 
   ctx.fillRect(
-
     x +
     Math.floor(
       obs.w * 0.3
@@ -1662,10 +1912,8 @@ function drawCactus(obs) {
 ========================================================= */
 
 function drawBird(obs) {
-
   const x =
     Math.floor(obs.x);
-
 
   const y =
     Math.floor(obs.y);
@@ -1677,7 +1925,9 @@ function drawBird(obs) {
       : "#e6e6e6";
 
 
-  /* Body */
+  /*
+   * Body
+   */
 
   ctx.fillRect(
     x + 7,
@@ -1687,7 +1937,9 @@ function drawBird(obs) {
   );
 
 
-  /* Head */
+  /*
+   * Head
+   */
 
   ctx.fillRect(
     x + 23,
@@ -1697,7 +1949,9 @@ function drawBird(obs) {
   );
 
 
-  /* Beak */
+  /*
+   * Beak
+   */
 
   ctx.fillRect(
     x + 31,
@@ -1707,7 +1961,9 @@ function drawBird(obs) {
   );
 
 
-  /* Tail */
+  /*
+   * Tail
+   */
 
   ctx.fillRect(
     x,
@@ -1717,19 +1973,18 @@ function drawBird(obs) {
   );
 
 
-  /* Wing */
+  /*
+   * Wing
+   */
 
   if (obs.wingUp) {
-
     ctx.fillRect(
       x + 8,
       y - 4,
       15,
       6
     );
-
   } else {
-
     ctx.fillRect(
       x + 8,
       y + 16,
@@ -1739,7 +1994,9 @@ function drawBird(obs) {
   }
 
 
-  /* Eye */
+  /*
+   * Eye
+   */
 
   ctx.fillStyle =
     state.day
@@ -1761,14 +2018,12 @@ function drawBird(obs) {
 ========================================================= */
 
 function jump() {
-
   if (!state.running) {
     startGame();
   }
 
 
   if (player.onGround) {
-
     player.vy =
       config.jumpVelocity;
 
@@ -1786,12 +2041,10 @@ function jump() {
 ========================================================= */
 
 function releaseJump() {
-
   player.jumpHeld = false;
 
 
   if (player.vy < 0) {
-
     player.vy =
       Math.max(
         player.vy,
@@ -1806,8 +2059,17 @@ function releaseJump() {
 ========================================================= */
 
 function duck(isDown) {
-
   if (!state.running) {
+    return;
+  }
+
+
+  /*
+   * Only duck while on ground.
+   */
+
+  if (!player.onGround) {
+    player.ducking = false;
     return;
   }
 
@@ -1822,12 +2084,15 @@ function duck(isDown) {
 ========================================================= */
 
 function handleKeyDown(event) {
-
   const {
     code,
     key
   } = event;
 
+
+  /*
+   * Prevent browser scrolling
+   */
 
   if (
     [
@@ -1836,20 +2101,19 @@ function handleKeyDown(event) {
       "ArrowDown"
     ].includes(code)
   ) {
-
     event.preventDefault();
   }
 
 
-  /* Jump */
+  /*
+   * Jump
+   */
 
   if (
     code === "Space" ||
     code === "ArrowUp"
   ) {
-
     if (state.gameOver) {
-
       resetGame();
 
       startGame();
@@ -1859,37 +2123,51 @@ function handleKeyDown(event) {
 
 
     jump();
+
+    return;
   }
 
 
-  /* Duck */
+  /*
+   * DUCK
+   *
+   * Important:
+   * ArrowDown is handled here.
+   */
 
-  else if (
+  if (
     code === "ArrowDown"
   ) {
-
     duck(true);
+
+    return;
   }
 
 
-  /* Pause */
+  /*
+   * Pause
+   */
 
-  else if (
+  if (
+    key &&
     key.toLowerCase() === "p" &&
     state.allowPause
   ) {
-
     pauseGame();
+
+    return;
   }
 
 
-  /* Restart */
+  /*
+   * Restart
+   */
 
-  else if (
+  if (
+    key &&
     key.toLowerCase() === "r" &&
     state.gameOver
   ) {
-
     resetGame();
 
     startGame();
@@ -1902,11 +2180,14 @@ function handleKeyDown(event) {
 ========================================================= */
 
 function handleKeyUp(event) {
+  /*
+   * IMPORTANT:
+   * Release ArrowDown here.
+   */
 
   if (
     event.code === "ArrowDown"
   ) {
-
     duck(false);
   }
 
@@ -1915,7 +2196,6 @@ function handleKeyUp(event) {
     event.code === "Space" ||
     event.code === "ArrowUp"
   ) {
-
     releaseJump();
   }
 }
@@ -1926,9 +2206,7 @@ function handleKeyUp(event) {
 ========================================================= */
 
 function handlePointerDown(event) {
-
   pointerStart = {
-
     y: event.clientY,
 
     time: performance.now()
@@ -1939,7 +2217,6 @@ function handlePointerDown(event) {
     !state.started ||
     state.running
   ) {
-
     jump();
   }
 }
@@ -1950,12 +2227,10 @@ function handlePointerDown(event) {
 ========================================================= */
 
 function handlePointerMove(event) {
-
   if (
     !pointerStart ||
     !state.running
   ) {
-
     return;
   }
 
@@ -1966,7 +2241,6 @@ function handlePointerMove(event) {
 
 
   if (deltaY > 40) {
-
     duck(true);
   }
 }
@@ -1977,7 +2251,6 @@ function handlePointerMove(event) {
 ========================================================= */
 
 function handlePointerUp(event) {
-
   if (!pointerStart) {
     return;
   }
@@ -1992,7 +2265,6 @@ function handlePointerUp(event) {
     state.gameOver &&
     deltaY <= 40
   ) {
-
     resetGame();
 
     startGame();
@@ -2012,11 +2284,9 @@ function handlePointerUp(event) {
 ========================================================= */
 
 function handleTouchStart(event) {
-
   if (
     event.touches.length > 1
   ) {
-
     return;
   }
 
@@ -2026,7 +2296,6 @@ function handleTouchStart(event) {
 
 
   touchStart = {
-
     y: touch.clientY,
 
     time: performance.now()
@@ -2037,7 +2306,6 @@ function handleTouchStart(event) {
     !state.started ||
     state.running
   ) {
-
     jump();
   }
 
@@ -2051,13 +2319,11 @@ function handleTouchStart(event) {
 ========================================================= */
 
 function handleTouchMove(event) {
-
   if (
     !touchStart ||
     event.touches.length > 1 ||
     !state.running
   ) {
-
     return;
   }
 
@@ -2072,7 +2338,6 @@ function handleTouchMove(event) {
 
 
   if (deltaY > 40) {
-
     duck(true);
   }
 
@@ -2086,7 +2351,6 @@ function handleTouchMove(event) {
 ========================================================= */
 
 function handleTouchEnd(event) {
-
   if (!touchStart) {
     return;
   }
@@ -2107,7 +2371,6 @@ function handleTouchEnd(event) {
     state.gameOver &&
     deltaY <= 40
   ) {
-
     resetGame();
 
     startGame();
@@ -2129,7 +2392,6 @@ function handleTouchEnd(event) {
 ========================================================= */
 
 function applyLayoutMode() {
-
   const isMobile =
     mobileQuery.matches;
 
@@ -2139,7 +2401,6 @@ function applyLayoutMode() {
 
 
   if (isMobile) {
-
     startTitle.textContent =
       "Tap to start";
 
@@ -2148,9 +2409,7 @@ function applyLayoutMode() {
 
     hintText.textContent =
       "Tap to jump. Swipe down to duck.";
-
   } else {
-
     startTitle.textContent =
       "Press Space or Tap to start";
 
@@ -2166,7 +2425,6 @@ function applyLayoutMode() {
     !state.allowPause &&
     state.paused
   ) {
-
     state.paused = false;
   }
 
@@ -2184,14 +2442,12 @@ function applyLayoutMode() {
 ========================================================= */
 
 function playSound(type) {
-
   if (!state.soundEnabled) {
     return;
   }
 
 
   if (!audioCtx) {
-
     const AudioContext =
       window.AudioContext ||
       window.webkitAudioContext;
@@ -2224,12 +2480,9 @@ function playSound(type) {
 
 
   if (type === "hit") {
-
     oscillator.frequency.value =
       160;
-
   } else {
-
     oscillator.frequency.value =
       440;
   }
@@ -2274,25 +2527,28 @@ function playSound(type) {
 ========================================================= */
 
 function getHitbox(rect) {
+  /*
+   * Slightly smaller hitbox for
+   * fair gameplay.
+   */
 
   return {
-
     x:
-      rect.x + 4,
+      rect.x + 5,
 
     y:
-      rect.y + 4,
+      rect.y + 5,
 
     w:
       Math.max(
         1,
-        rect.w - 8
+        rect.w - 10
       ),
 
     h:
       Math.max(
         1,
-        rect.h - 8
+        rect.h - 10
       )
   };
 }
@@ -2307,7 +2563,6 @@ function lerpColor(
   b,
   amount
 ) {
-
   const ah =
     Number.parseInt(
       a.replace("#", ""),
@@ -2378,7 +2633,6 @@ function randRange(
   min,
   max
 ) {
-
   return (
     Math.random() *
     (max - min) +
@@ -2394,7 +2648,6 @@ function randRange(
 restartBtn.addEventListener(
   "click",
   () => {
-
     resetGame();
 
     startGame();
@@ -2409,7 +2662,6 @@ restartBtn.addEventListener(
 soundToggle.addEventListener(
   "change",
   (event) => {
-
     state.soundEnabled =
       event.target.checked;
 
@@ -2432,7 +2684,6 @@ soundToggle.addEventListener(
 motionToggle.addEventListener(
   "change",
   (event) => {
-
     state.reducedMotion =
       event.target.checked;
 
@@ -2465,16 +2716,13 @@ window.addEventListener(
 if (
   mobileQuery.addEventListener
 ) {
-
   mobileQuery.addEventListener(
     "change",
     applyLayoutMode
   );
-
 } else if (
   mobileQuery.addListener
 ) {
-
   mobileQuery.addListener(
     applyLayoutMode
   );
@@ -2510,7 +2758,6 @@ window.addEventListener(
   startOverlay,
   gameOverOverlay
 ].forEach((target) => {
-
   if (!target) {
     return;
   }
